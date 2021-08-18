@@ -13,7 +13,7 @@ int sum(int, int);
 // int sum(int num1, int num2);
 // int sum(int, int);
 
-int main() {
+int main13() {
 	int a = 10;
 	int b = 20;
 	int c = sum(a, b);
