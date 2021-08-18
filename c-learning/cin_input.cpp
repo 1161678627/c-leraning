@@ -2,7 +2,7 @@
 #include<string>
 using namespace std;
 
-int main() {
+int main6() {
 
 	// 注意当前方法一个程序仅能读取一行输入！
 
