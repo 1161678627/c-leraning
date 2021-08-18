@@ -20,4 +20,5 @@ int main3() {
 	cout << num4 << endl;
 	int num5 = 3e3;
 	cout << num5 << endl;
+	return 0;
 }
