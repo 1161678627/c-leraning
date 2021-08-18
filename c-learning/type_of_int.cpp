@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main() {
+int main2() {
 
 	// 整形
 	// 1 short 2个字节  取值范围 -32768,+32768-1， -2^15,+2^15-1 ,越界后 从最小的开始给上走
