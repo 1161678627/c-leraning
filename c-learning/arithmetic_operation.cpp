@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main() {
+int main7() {
 	// 加减乘除运算
 	// 加减乘不说了没啥
 	// 除法说一下，首先避免除0错误，
