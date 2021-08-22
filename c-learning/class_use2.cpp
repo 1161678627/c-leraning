@@ -58,7 +58,7 @@ void test() {
 	delete cat2;
 }
 
-int main() {
+int main22() {
 
 	test();
 	return 0;
