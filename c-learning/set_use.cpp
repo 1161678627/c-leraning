@@ -148,6 +148,102 @@ void test_set5()
 	}
 }
 
+// 仿函数类
+class MyCompare
+{
+public:
+	// 重载小括号,记得后面要加const
+	bool operator() (int v1, int v2)const
+	{
+		// 想让第一个数大于第二个数
+		return v1 > v2;
+	}
+
+private:
+
+};
+
+
+
+// set容器排序规则修改---内置数据类型
+void test_set6()
+{
+	set<int> s1;
+	s1.insert(10);
+	s1.insert(40);
+	s1.insert(20);
+	s1.insert(30);
+	myPrint(s1);	// 打印时候已经默认升序拍好xu了
+
+	// 修改排序规则为降序
+	// 因为set是插入的时候构建二叉树排序的，因此想要重新指定set的排序规则，就必须在创建容器，还没有插入数据前就指定好
+	// 建立set时候，可以指定第二个参数为一个仿函数
+	set<int, MyCompare> s2;
+	s2.insert(10);
+	s2.insert(40);
+	s2.insert(20);
+	s2.insert(30);
+	// 遍历规则也要改下
+	for (set<int, MyCompare>::iterator i = s2.begin(); i != s2.end(); i++)
+	{
+		cout << *i << ' ';
+	}
+
+}
+
+class MyPerson
+{
+public:
+	MyPerson(string name, int age)
+	{
+		this->m_name = name;
+		this->age = age;
+	}
+	string m_name;
+	int age;
+
+private:
+
+};
+
+class MyPersonCompare
+{
+public:
+	bool operator() (const MyPerson p1, const MyPerson p2)const
+	{
+		// 按照年龄降序
+		return p1.age > p2.age;
+	}
+
+private:
+
+};
+
+
+// set容器排序规则修改---自定义数据类型
+void test_set7()
+{
+	MyPerson p1("刘备", 23);
+	MyPerson p2("关羽", 27);
+	MyPerson p3("张飞", 25);
+	MyPerson p4("赵云", 21);
+
+	// 自定义数据类型如果不指定排序规则，否则插入就会报错，因为插入时不知道怎么排序
+	// 所以在创建 set自定义数据类型 时就应该指定 仿函数排序规则
+	set<MyPerson, MyPersonCompare> s1;
+	
+	s1.insert(p1);
+	s1.insert(p2);
+	s1.insert(p3);
+	s1.insert(p4);
+
+	// 打印
+	for (set<MyPerson, MyPersonCompare>::iterator i = s1.begin(); i != s1.end(); i++)
+	{
+		cout << "姓名：" << i->m_name << " 年龄：" << i->age << endl;
+	}
+}
+
 
 // 32
 int main32() {
@@ -157,5 +253,8 @@ int main32() {
 	// test_set2();
 	// test_set3();
 	// test_set4();
-	test_set5();
+	// test_set5();
+	// test_set6();
+	test_set7();
+	return 0;
 }
